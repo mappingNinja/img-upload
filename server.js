@@ -14,8 +14,8 @@ const router = express.Router();
 // Middlewares
 app.use(express.json())
 app.use(bodyParser.json());
-app.use(fileUpload());
-app.use(express.static('public'));
+router.use(fileUpload());
+// app.use(express.static('public'));
 router.use(express.static('public'));
 
 app.use(cors());
@@ -30,10 +30,10 @@ app.get('/', (req, res) => {
 })
 
 router.use('/api/file', uploadRouter);
+router.use(error);
 
 app.use(`/.netlify/functions/server`, router)
-app.use(error);
-router.use(error);
+// app.use(error);
 
 app.listen(PORT, () => {
   console.log('Server is Running on : ', PORT)
