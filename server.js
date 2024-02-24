@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 router.use('/api/file', uploadRouter);
-router.use(error);
+// router.use(error);
 
 app.use(`/.netlify/functions/server`, router)
 // app.use(error);
